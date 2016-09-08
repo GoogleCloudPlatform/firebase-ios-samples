@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44494368E14A5ED104970A97 /* Pods_PlayChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 786A8A41C5A313B75D667FFA /* Pods_PlayChat.framework */; };
 		7E32F0B81D3F208B00B02F5B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32F0B71D3F208B00B02F5B /* Message.swift */; };
 		7E5463E11D2667F000416C84 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E5463E01D2667F000416C84 /* GoogleService-Info.plist */; };
 		7EB2DB131D26400B00C7E163 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2DB121D26400B00C7E163 /* AppDelegate.swift */; };
@@ -19,7 +18,6 @@
 		7EBDB0AB1D49C4620043FC1E /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBDB0AA1D49C4620043FC1E /* LogEntry.swift */; };
 		7EFC4AFC1D2A40350006F238 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC4AFB1D2A40350006F238 /* SigninViewController.swift */; };
 		7EFC4AFE1D2FB2810006F238 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC4AFD1D2FB2810006F238 /* MessageCell.swift */; };
-		C7F8F2C5044BD708303239AC /* Pods_PlayChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB66A41BD4AA46F8205AAEE /* Pods_PlayChatUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +31,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		786A8A41C5A313B75D667FFA /* Pods_PlayChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E32F0B71D3F208B00B02F5B /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7E5463E01D2667F000416C84 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7E5463EE1D2678EB00416C84 /* PlayChat-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlayChat-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -50,11 +47,6 @@
 		7EBDB0AA1D49C4620043FC1E /* LogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
 		7EFC4AFB1D2A40350006F238 /* SigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		7EFC4AFD1D2FB2810006F238 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
-		94785E63D96203BCF0E19002 /* Pods-PlayChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayChatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlayChatUITests/Pods-PlayChatUITests.release.xcconfig"; sourceTree = "<group>"; };
-		AFB66A41BD4AA46F8205AAEE /* Pods_PlayChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0E45ABDE5C9C22290489B05 /* Pods-PlayChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlayChatUITests/Pods-PlayChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		EFAFE5E8E2EBBC6C8CED2450 /* Pods-PlayChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlayChat/Pods-PlayChat.debug.xcconfig"; sourceTree = "<group>"; };
-		FF55650C35E52C94768E02B4 /* Pods-PlayChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlayChat/Pods-PlayChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +54,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44494368E14A5ED104970A97 /* Pods_PlayChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,32 +61,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7F8F2C5044BD708303239AC /* Pods_PlayChatUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		346058EE0E17B428DF787B31 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EFAFE5E8E2EBBC6C8CED2450 /* Pods-PlayChat.debug.xcconfig */,
-				FF55650C35E52C94768E02B4 /* Pods-PlayChat.release.xcconfig */,
-				D0E45ABDE5C9C22290489B05 /* Pods-PlayChatUITests.debug.xcconfig */,
-				94785E63D96203BCF0E19002 /* Pods-PlayChatUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		7EB2DB061D26400B00C7E163 = {
 			isa = PBXGroup;
 			children = (
 				7EB2DB111D26400B00C7E163 /* PlayChat */,
 				7EB2DB281D26400B00C7E163 /* PlayChatUITests */,
 				7EB2DB101D26400B00C7E163 /* Products */,
-				346058EE0E17B428DF787B31 /* Pods */,
-				81389A3EF4D7DA68487B998E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,15 +111,6 @@
 				7EB2DB2B1D26400B00C7E163 /* Info.plist */,
 			);
 			path = PlayChatUITests;
-			sourceTree = "<group>";
-		};
-		81389A3EF4D7DA68487B998E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				786A8A41C5A313B75D667FFA /* Pods_PlayChat.framework */,
-				AFB66A41BD4AA46F8205AAEE /* Pods_PlayChatUITests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,7 +432,6 @@
 		};
 		7EB2DB2F1D26400B00C7E163 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFAFE5E8E2EBBC6C8CED2450 /* Pods-PlayChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -479,7 +446,6 @@
 		};
 		7EB2DB301D26400B00C7E163 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF55650C35E52C94768E02B4 /* Pods-PlayChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -493,7 +459,6 @@
 		};
 		7EB2DB321D26400B00C7E163 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0E45ABDE5C9C22290489B05 /* Pods-PlayChatUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = PlayChatUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -506,7 +471,6 @@
 		};
 		7EB2DB331D26400B00C7E163 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94785E63D96203BCF0E19002 /* Pods-PlayChatUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = PlayChatUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

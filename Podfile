@@ -6,13 +6,8 @@ target 'PlayChat' do
   use_frameworks!
 
   # Pods for PlayChat
-  pod 'Firebase'
+  pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Google/SignIn'
-  pod 'Firebase/Auth'
-  target 'PlayChatUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 
 end
