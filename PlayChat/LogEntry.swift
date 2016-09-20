@@ -35,7 +35,7 @@ class LogEntry : NSData {
     fatalError("init(coder:) has not been implemented")
   }
     
-  func toJson() -> [String : NSObject!] {
+  func toDictionary() -> [String : AnyObject!] {
     let json = ["tag": tag, "log": log, "time": time]
     return json
   }

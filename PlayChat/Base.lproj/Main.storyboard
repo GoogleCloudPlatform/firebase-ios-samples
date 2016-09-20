@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Yl-G4-aBi" userLabel="SigninButton" customClass="GIDSignInButton" colorLabel="IBBuiltInLabel-Orange">
-                                <rect key="frame" x="97" y="264" width="187" height="71"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Yl-G4-aBi" userLabel="SigninButton" customClass="GIDSignInButton" colorLabel="IBBuiltInLabel-Orange">
+                                <rect key="frame" x="207" y="264" width="187" height="71"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" label="Sign-in">
                                     <accessibilityTraits key="traits" button="YES"/>
@@ -33,11 +33,15 @@
                             <accessibilityTraits key="traits" button="YES"/>
                             <bool key="isElement" value="YES"/>
                         </accessibility>
+                        <constraints>
+                            <constraint firstItem="2Yl-G4-aBi" firstAttribute="centerX" secondItem="nrA-TJ-aXX" secondAttribute="centerX" id="CKc-nx-Avk"/>
+                            <constraint firstItem="2Yl-G4-aBi" firstAttribute="centerY" secondItem="nrA-TJ-aXX" secondAttribute="centerY" id="JYY-QG-Nko"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhH-jj-aQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-702" y="3"/>
+            <point key="canvasLocation" x="-670" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

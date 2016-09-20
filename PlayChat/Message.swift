@@ -35,7 +35,7 @@ class Message : NSData {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func toJson() -> [String : NSObject!] {
+  func toDictionary() -> [String : AnyObject!] {
     let json = ["text": text, "displayName": displayName, "time": time]
     return json
   }
