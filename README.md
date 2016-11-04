@@ -1,5 +1,5 @@
-# Build a Mobile App Using  Firebase and App Engine Flexible Environment
-This repository contains iOS client sample code for "[Build a Mobile App Using  Firebase and App Engine Flexible Environment](https://cloud.google.com/solutions/mobile/mobile-firebase-app-engine-flexible-ios)" paper. Sample backend code can be found [here](https://github.com/GoogleCloudPlatform/firebase-appengine-backend).
+# Build an iOS App Using  Firebase and App Engine Flexible Environment
+This repository contains iOS client sample code for "[Build an iOS App Using  Firebase and App Engine Flexible Environment](https://cloud.google.com/solutions/mobile/mobile-firebase-app-engine-flexible-ios)" paper. Sample backend code can be found [here](https://github.com/GoogleCloudPlatform/firebase-appengine-backend).
 
 ## Build Requirements
 - Following Google APIs are needed to be enabled from Google Developers Console.
