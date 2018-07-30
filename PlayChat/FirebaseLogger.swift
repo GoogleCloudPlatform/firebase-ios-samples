@@ -22,7 +22,7 @@ class FirebaseLogger {
     logRef = ref.child(path)
   }
     
-  func log(tag: String!, message: String!) {
+  func log(_ tag: String!, message: String!) {
     let entry : LogEntry = LogEntry(tag: tag, log: message)
     logRef.childByAutoId().setValue(entry.toDictionary())
   }

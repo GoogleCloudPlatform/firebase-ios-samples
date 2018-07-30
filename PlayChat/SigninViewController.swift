@@ -24,7 +24,7 @@ class SigninViewController: UIViewController, GIDSignInUIDelegate {
     GIDSignIn.sharedInstance().uiDelegate = self
   }
     
-  @IBAction func didTapSignIn(sender: AnyObject) {
+  @IBAction func didTapSignIn(_ sender: AnyObject) {
     GIDSignIn.sharedInstance().signIn()
   }
     

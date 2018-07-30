@@ -38,23 +38,23 @@ UITextFieldDelegate {
   var channelViewDict: [String : UITableView] = [:]
   var fbLog: FirebaseLogger?
   
-  func application(application: UIApplication, didFinishLaunchingWithOptions
-    launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions
+    launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     var configureError: NSError?
     GGLContext.sharedInstance().configureWithError(&configureError)
-    assert(configureError == nil, "Config error: \(configureError)")
+    assert(configureError == nil, "Config error: \(String(describing: configureError))")
     
-    let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist")!
+    let path = Bundle.main.path(forResource: "Info", ofType: "plist")!
     let dict = NSDictionary(contentsOfFile: path) as! [String: AnyObject]
     let channels = dict["Channels"] as! String
-    let chanArray = channels.componentsSeparatedByString(",")
+    let chanArray = channels.components(separatedBy: ",")
     maxMessages = dict["MaxMessages"] as! UInt
 
     storyboard = UIStoryboard(name: "Main", bundle: nil)
     navigationController = storyboard!.instantiateInitialViewController()
       as? UINavigationController
     tabBarController = self.storyboard!
-      .instantiateViewControllerWithIdentifier("TabBarController")
+      .instantiateViewController(withIdentifier: "TabBarController")
       as! UITabBarController
     msgViewController = MessageViewController(maxMessages: maxMessages)
     tabBarController?.delegate = msgViewController
@@ -71,55 +71,55 @@ UITextFieldDelegate {
     return true
   }
   
-  func buildChannelView(title : String) -> UIViewController {
+  func buildChannelView(_ title : String) -> UIViewController {
     let channelView = UIViewController()
     let fontBold:UIFont = UIFont(name: "HelveticaNeue-Bold", size: 14)!
     channelView.tabBarItem.title = title
     channelView.tabBarItem.setTitleTextAttributes(
       [
-        NSForegroundColorAttributeName: UIColor.grayColor(),
+        NSForegroundColorAttributeName: UIColor.gray,
         NSFontAttributeName: fontBold
-      ], forState: UIControlState.Normal)
+      ], for: UIControlState())
     channelView.tabBarItem.setTitleTextAttributes(
       [
-        NSForegroundColorAttributeName: UIColor.blackColor(),
+        NSForegroundColorAttributeName: UIColor.black,
         NSFontAttributeName: fontBold
-      ], forState: UIControlState.Selected)
+      ], for: UIControlState.selected)
     
     let tableView:UITableView = UITableView()
     let height = channelView.view.frame.height
     let width = channelView.view.frame.width
     print(height)
     print(width)
-    tableView.frame = CGRectMake(0, 20, width, height - 110);
+    tableView.frame = CGRect(x: 0, y: 20, width: width, height: height - 110);
     tableView.rowHeight = 50
     tableView.estimatedRowHeight = 40
     tableView.delegate = self
     tableView.dataSource = msgViewController
-    tableView.registerClass(
+    tableView.register(
       MessageCell.self,
-      forCellReuseIdentifier: NSStringFromClass(MessageCell))
+      forCellReuseIdentifier: NSStringFromClass(MessageCell.self))
     tableView.translatesAutoresizingMaskIntoConstraints = true
     channelView.view.addSubview(tableView)
     msgViewController!.channelViewDict[title] = tableView
     
     let signOutButton:UIButton = UIButton(
-      frame: CGRectMake(5, height - 80, 55, 20))
-    signOutButton.setTitle(" << ", forState: .Normal)
-    signOutButton.titleLabel?.textColor = UIColor.cyanColor()
+      frame: CGRect(x: 5, y: height - 80, width: 55, height: 20))
+    signOutButton.setTitle(" << ", for: UIControlState())
+    signOutButton.titleLabel?.textColor = UIColor.cyan
 
     signOutButton.addTarget(self, action: #selector(AppDelegate.signOut(_:)),
-                            forControlEvents: .TouchUpInside)
+                            for: .touchUpInside)
     channelView.view.addSubview(signOutButton)
     
     let textField:UITextField = UITextField(
-      frame: CGRectMake(60, height - 80, 300, 20))
+      frame: CGRect(x: 60, y: height - 80, width: 300, height: 20))
     textField.attributedPlaceholder = NSAttributedString(
       string: "Enter your message",
-      attributes: [NSForegroundColorAttributeName: UIColor.lightGrayColor()])
-    textField.userInteractionEnabled = true
-    textField.textColor = UIColor.whiteColor()
-    textField.backgroundColor = UIColor.blackColor()
+      attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
+    textField.isUserInteractionEnabled = true
+    textField.textColor = UIColor.white
+    textField.backgroundColor = UIColor.black
     textField.becomeFirstResponder()
     textField.delegate = self
     channelView.view.addSubview(textField)
@@ -127,20 +127,21 @@ UITextFieldDelegate {
     return channelView
   }
   
-  func application(application: UIApplication, openURL url: NSURL,
-                   options: [String: AnyObject]) -> Bool {
-    return GIDSignIn.sharedInstance().handleURL(url, sourceApplication:
-      options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
-              annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+  func application(_ application: UIApplication, open url: URL,
+                   options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
+    return GIDSignIn.sharedInstance().handle(url, sourceApplication:
+      options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+              annotation: options[UIApplicationOpenURLOptionsKey.annotation])
   }
-  func applicationWillResignActive(application: UIApplication) {}
-  func applicationDidEnterBackground(application: UIApplication) {}
-  func applicationWillEnterForeground(application: UIApplication) {}
-  func applicationDidBecomeActive(application: UIApplication) {}
-  func applicationWillTerminate(application: UIApplication) {}
+  func applicationWillResignActive(_ application: UIApplication) {}
+  func applicationDidEnterBackground(_ application: UIApplication) {}
+  func applicationWillEnterForeground(_ application: UIApplication) {}
+  func applicationDidBecomeActive(_ application: UIApplication) {}
+  func applicationWillTerminate(_ application: UIApplication) {}
   
-  func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-              withError error: NSError!) {
+    
+  func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
     if let error = error {
       print("signIn error : \(error.localizedDescription)")
       return
@@ -150,14 +151,14 @@ UITextFieldDelegate {
       self.user = user
       let authentication = user.authentication
       let credential =
-        FIRGoogleAuthProvider.credentialWithIDToken(
-          authentication.idToken,
-          accessToken: authentication.accessToken)
-      FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+        FIRGoogleAuthProvider.credential(
+          withIDToken: (authentication?.idToken)!,
+          accessToken: (authentication?.accessToken)!)
+      FIRAuth.auth()?.signIn(with: credential) { (user, error) in
         print("Signed-in to Firebase as \(user!.displayName!)")
         let nav = UINavigationController(
           rootViewController: self.tabBarController!)
-        self.window?.rootViewController?.presentViewController(
+        self.window?.rootViewController?.present(
           nav,
           animated: true, completion: nil)
         self.ref = FIRDatabase.database().reference()
@@ -171,16 +172,16 @@ UITextFieldDelegate {
     }
   }
   
-  func signOut(sender:UIButton) {
+  func signOut(_ sender:UIButton) {
     fbLog!.log(inbox, message: "Signed out")
     do {
       try FIRAuth.auth()!.signOut()
       let signInController = self.storyboard!
-        .instantiateViewControllerWithIdentifier("Signin") as UIViewController!
-      let nav = UINavigationController(rootViewController: signInController)
-      window?.rootViewController?.presentViewController(nav, animated: false,
+        .instantiateViewController(withIdentifier: "Signin") as UIViewController!
+      let nav = UINavigationController(rootViewController: signInController!)
+      window?.rootViewController?.present(nav, animated: false,
                                                         completion: nil)
-      window?.rootViewController?.dismissViewControllerAnimated(false,
+      window?.rootViewController?.dismiss(animated: false,
                                                                 completion: nil)
     } catch let error as NSError {
       print ("Error signing out: %@", error)
@@ -191,11 +192,11 @@ UITextFieldDelegate {
   func requestLogger() {
     ref.child(IBX + "/" + inbox!).removeValue()
     ref.child(IBX + "/" + inbox!)
-      .observeEventType(.Value, withBlock: {snapshot in
+      .observe(.value, with: {snapshot in
         print(self.inbox!)
         if (snapshot.exists()) {
           self.fbLog = FirebaseLogger(ref: self.ref, path: self.IBX + "/"
-            + String(snapshot.value!) + "/logs")
+            + String(describing: snapshot.value!) + "/logs")
           self.ref.child(self.IBX + "/" + self.inbox!).removeAllObservers()
           self.msgViewController!.fbLog = self.fbLog
           self.fbLog!.log(self.inbox, message: "Signed in")
@@ -204,7 +205,7 @@ UITextFieldDelegate {
     ref.child(REQLOG).childByAutoId().setValue(inbox)
   }
   
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if (msgs.count == Int(maxMessages)) {
       msgs.removeFirst()
     }
