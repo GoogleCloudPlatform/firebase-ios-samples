@@ -51,13 +51,30 @@ DEPENDENCIES:
   - Firebase/Database
   - Google/SignIn
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseDatabase
+    - FirebaseInstanceID
+    - Google
+    - GoogleAppUtilities
+    - GoogleAuthUtilities
+    - GoogleInterchangeUtilities
+    - GoogleNetworkingUtilities
+    - GoogleParsingUtilities
+    - GoogleSignIn
+    - GoogleSymbolUtilities
+    - GoogleUtilities
+
 SPEC CHECKSUMS:
   Firebase: 6250071f0e2440a5c4c67b8cb6b868f868237ac3
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
   FirebaseAuth: 5efddc3fae47042b73585f083f956462be4f5b8e
   FirebaseDatabase: 59bea2e7dfd81b3b8b2f8e396caf1a52c2ced6f7
   FirebaseInstanceID: a9d923f3d0b6fbf9fac89310860357aaadc34be5
-  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  Google: cd92fab98f800f509da88c1e0c570275713bc9d5
   GoogleAppUtilities: f1730f91f67767b453c289577040dd3f425ffdc7
   GoogleAuthUtilities: d7a19615cd7627688afcf181737f1011ee8b5a23
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
@@ -67,6 +84,6 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
 
-PODFILE CHECKSUM: 68752ba80d08cb5f30fc4bcfe2855ee6952d7ed8
+PODFILE CHECKSUM: 555b4b03edaac1cb373d31ce662be9285ef288b7
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.5.3
