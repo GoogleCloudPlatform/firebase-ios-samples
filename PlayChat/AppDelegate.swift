@@ -177,8 +177,8 @@ UITextFieldDelegate {
     do {
       try FIRAuth.auth()!.signOut()
       let signInController = self.storyboard!
-        .instantiateViewController(withIdentifier: "Signin") as UIViewController!
-      let nav = UINavigationController(rootViewController: signInController!)
+        .instantiateViewController(withIdentifier: "Signin") as UIViewController
+      let nav = UINavigationController(rootViewController: signInController)
       window?.rootViewController?.present(nav, animated: false,
                                                         completion: nil)
       window?.rootViewController?.dismiss(animated: false,
