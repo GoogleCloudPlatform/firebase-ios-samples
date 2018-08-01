@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2We-av-N55">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2We-av-N55">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Signin-->
@@ -14,28 +18,29 @@
                         <viewControllerLayoutGuide type="bottom" id="fHT-Dl-g91"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nrA-TJ-aXX" userLabel="Signin" customClass="UIButton" propertyAccessControl="none">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Yl-G4-aBi" userLabel="SigninButton" customClass="GIDSignInButton" colorLabel="IBBuiltInLabel-Orange">
-                                <rect key="frame" x="207" y="264" width="187" height="71"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Yl-G4-aBi" userLabel="SigninButton" customClass="GIDSignInButton" colorLabel="IBBuiltInLabel-Orange">
+                                <rect key="frame" x="94.5" y="298" width="186" height="71"/>
+                                <color key="backgroundColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" label="Sign-in">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="107" y="264" width="187" height="71"/>
-                                </variation>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="186" id="q46-rV-Fee"/>
+                                    <constraint firstAttribute="height" constant="71" id="tgk-kq-43J"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration">
                             <accessibilityTraits key="traits" button="YES"/>
                             <bool key="isElement" value="YES"/>
                         </accessibility>
                         <constraints>
-                            <constraint firstItem="2Yl-G4-aBi" firstAttribute="centerX" secondItem="nrA-TJ-aXX" secondAttribute="centerX" id="CKc-nx-Avk"/>
-                            <constraint firstItem="2Yl-G4-aBi" firstAttribute="centerY" secondItem="nrA-TJ-aXX" secondAttribute="centerY" id="JYY-QG-Nko"/>
+                            <constraint firstItem="2Yl-G4-aBi" firstAttribute="centerY" secondItem="nrA-TJ-aXX" secondAttribute="centerY" id="Kte-fI-YJ3"/>
+                            <constraint firstItem="2Yl-G4-aBi" firstAttribute="centerX" secondItem="nrA-TJ-aXX" secondAttribute="centerX" id="VOh-i5-w4T"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -51,7 +56,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

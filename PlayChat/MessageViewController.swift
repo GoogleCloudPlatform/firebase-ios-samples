@@ -21,8 +21,8 @@ UITabBarControllerDelegate {
   let CHS : String = "channels"
 
   var inbox: String!
-  var ref: FIRDatabaseReference!
-  var query: FIRDatabaseQuery!
+  var ref: DatabaseReference!
+  var query: DatabaseQuery!
   let dayFormatter = DateFormatter()
   var channelViewDict: [String : UITableView] = [:]
   var msgs: [Message] = []
@@ -50,7 +50,7 @@ UITabBarControllerDelegate {
         
       let enumerator = snapshot.children
       
-      while let entry = enumerator.nextObject() as? FIRDataSnapshot {
+      while let entry = enumerator.nextObject() as? DataSnapshot {
         let dictionary = entry.value as! Dictionary<String, AnyObject>
         let msg = Message(
             text: dictionary["text"] as! String,

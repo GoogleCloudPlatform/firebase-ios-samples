@@ -16,9 +16,9 @@
 import Firebase
 
 class FirebaseLogger {
-  var logRef: FIRDatabaseReference!
+  var logRef: DatabaseReference!
     
-  init(ref: FIRDatabaseReference!, path: String!) {
+  init(ref: DatabaseReference!, path: String!) {
     logRef = ref.child(path)
   }
     

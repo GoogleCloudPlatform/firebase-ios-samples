@@ -24,7 +24,7 @@ class Message : NSData {
     super.init()
     self.text = text
     self.displayName = displayName
-    self.time = FIRServerValue.timestamp() as NSObject
+    self.time = ServerValue.timestamp() as NSObject
   }
     
   convenience override init() {

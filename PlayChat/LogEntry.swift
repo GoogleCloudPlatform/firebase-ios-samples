@@ -24,7 +24,7 @@ class LogEntry : NSData {
     super.init()
     self.tag = tag
     self.log = log
-    self.time = FIRServerValue.timestamp() as NSObject
+    self.time = ServerValue.timestamp() as NSObject
   }
     
   convenience override init() {

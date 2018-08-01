@@ -14,6 +14,7 @@
  **/
 
 import Firebase
+import GoogleSignIn
 import UIKit
 
 @UIApplicationMain
@@ -33,16 +34,16 @@ UITextFieldDelegate {
   
   var user: GIDGoogleUser!
   var inbox: String?
-  var ref: FIRDatabaseReference!
+  var ref: DatabaseReference!
   var msgs: [Message] = []
   var channelViewDict: [String : UITableView] = [:]
   var fbLog: FirebaseLogger?
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    var configureError: NSError?
-    GGLContext.sharedInstance().configureWithError(&configureError)
-    assert(configureError == nil, "Config error: \(String(describing: configureError))")
+    // var configureError: NSError?
+    // GGLContext.sharedInstance().configureWithError(&configureError)
+    // assert(configureError == nil, "Config error: \(String(describing: configureError))")
     
     let path = Bundle.main.path(forResource: "Info", ofType: "plist")!
     let dict = NSDictionary(contentsOfFile: path) as! [String: AnyObject]
@@ -64,8 +65,9 @@ UITextFieldDelegate {
       tabBarController?.viewControllers?.append(buildChannelView(chanArray[i]))
     }
     
-    FIRApp.configure()
-    GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+    FirebaseApp.configure()
+    
+    GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
     GIDSignIn.sharedInstance().delegate = self
     
     return true
@@ -129,9 +131,9 @@ UITextFieldDelegate {
   
   func application(_ application: UIApplication, open url: URL,
                    options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
-    return GIDSignIn.sharedInstance().handle(url, sourceApplication:
-      options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-              annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+    return GIDSignIn.sharedInstance().handle(url,
+                                             sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                             annotation: [:])
   }
   func applicationWillResignActive(_ application: UIApplication) {}
   func applicationDidEnterBackground(_ application: UIApplication) {}
@@ -139,9 +141,8 @@ UITextFieldDelegate {
   func applicationDidBecomeActive(_ application: UIApplication) {}
   func applicationWillTerminate(_ application: UIApplication) {}
   
-    
   func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-              withError error: Error!) {
+              withError error: Error?) {
     if let error = error {
       print("signIn error : \(error.localizedDescription)")
       return
@@ -149,33 +150,39 @@ UITextFieldDelegate {
     
     if (self.user == nil) {
       self.user = user
-      let authentication = user.authentication
-      let credential =
-        FIRGoogleAuthProvider.credential(
-          withIDToken: (authentication?.idToken)!,
-          accessToken: (authentication?.accessToken)!)
-      FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-        print("Signed-in to Firebase as \(user!.displayName!)")
+      guard let authentication = user.authentication else { return }
+      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                     accessToken: authentication.accessToken)
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if error != nil {
+                return
+            }
+        print("Signed-in to Firebase as \(String(describing: authResult?.user.displayName))")
         let nav = UINavigationController(
           rootViewController: self.tabBarController!)
         self.window?.rootViewController?.present(
           nav,
           animated: true, completion: nil)
-        self.ref = FIRDatabase.database().reference()
+        self.ref = Database.database().reference()
         self.inbox = "client-" + String(abs(self.user.userID.hash))
 
         self.msgViewController!.inbox = self.inbox
         self.msgViewController!.ref = self.ref
-        
+
         self.requestLogger()
       }
     }
   }
+
+  func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+    // Perform any operations when the user disconnects from the app.
+  }
   
   func signOut(_ sender:UIButton) {
     fbLog!.log(inbox, message: "Signed out")
+    let firebaseAuth = Auth.auth()
     do {
-      try FIRAuth.auth()!.signOut()
+      try firebaseAuth.signOut()
       let signInController = self.storyboard!
         .instantiateViewController(withIdentifier: "Signin") as UIViewController
       let nav = UINavigationController(rootViewController: signInController)
