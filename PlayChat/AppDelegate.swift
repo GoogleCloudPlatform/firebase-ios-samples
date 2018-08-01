@@ -41,9 +41,6 @@ UITextFieldDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // var configureError: NSError?
-    // GGLContext.sharedInstance().configureWithError(&configureError)
-    // assert(configureError == nil, "Config error: \(String(describing: configureError))")
     
     let path = Bundle.main.path(forResource: "Info", ofType: "plist")!
     let dict = NSDictionary(contentsOfFile: path) as! [String: AnyObject]
@@ -79,13 +76,13 @@ UITextFieldDelegate {
     channelView.tabBarItem.title = title
     channelView.tabBarItem.setTitleTextAttributes(
       [
-        NSForegroundColorAttributeName: UIColor.gray,
-        NSFontAttributeName: fontBold
+        NSAttributedStringKey.foregroundColor: UIColor.gray,
+        NSAttributedStringKey.font: fontBold
       ], for: UIControlState())
     channelView.tabBarItem.setTitleTextAttributes(
       [
-        NSForegroundColorAttributeName: UIColor.black,
-        NSFontAttributeName: fontBold
+        NSAttributedStringKey.foregroundColor: UIColor.black,
+        NSAttributedStringKey.font: fontBold
       ], for: UIControlState.selected)
     
     let tableView:UITableView = UITableView()
@@ -118,7 +115,7 @@ UITextFieldDelegate {
       frame: CGRect(x: 60, y: height - 80, width: 300, height: 20))
     textField.attributedPlaceholder = NSAttributedString(
       string: "Enter your message",
-      attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
+      attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
     textField.isUserInteractionEnabled = true
     textField.textColor = UIColor.white
     textField.backgroundColor = UIColor.black
@@ -178,7 +175,7 @@ UITextFieldDelegate {
     // Perform any operations when the user disconnects from the app.
   }
   
-  func signOut(_ sender:UIButton) {
+  @objc func signOut(_ sender:UIButton) {
     fbLog!.log(inbox, message: "Signed out")
     let firebaseAuth = Auth.auth()
     do {

@@ -43,8 +43,8 @@ UITabBarControllerDelegate {
       .queryOrdered(byChild: "time").queryLimited(toLast: maxMessages)
     let title = String(ptabBarController.selectedViewController!
       .tabBarItem.title!)
-    let tableView : UITableView = channelViewDict[title!]!
-    fbLog?.log(inbox, message: "Switching channel to '" + title! + "'")
+    let tableView : UITableView = channelViewDict[title]!
+    fbLog?.log(inbox, message: "Switching channel to '" + title + "'")
     query.observe(.value, with : { snapshot in
       self.msgs = []
         
