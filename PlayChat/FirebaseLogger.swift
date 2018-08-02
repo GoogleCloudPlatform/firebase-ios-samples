@@ -17,13 +17,13 @@ import Firebase
 
 class FirebaseLogger {
   var logRef: DatabaseReference!
-    
+
   init(ref: DatabaseReference!, path: String!) {
     logRef = ref.child(path)
   }
-    
+
   func log(_ tag: String!, message: String!) {
-    let entry : LogEntry = LogEntry(tag: tag, log: message)
+    let entry: LogEntry = LogEntry(tag: tag, log: message)
     logRef.childByAutoId().setValue(entry.toDictionary())
   }
 }

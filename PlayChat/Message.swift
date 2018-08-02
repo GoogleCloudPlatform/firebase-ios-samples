@@ -15,28 +15,28 @@
 
 import Firebase
 
-class Message : NSData {
+class Message: NSData {
   var text: String!
   var displayName: String!
   var time: NSObject!
-    
+
   init(text: String, displayName: String) {
     super.init()
     self.text = text
     self.displayName = displayName
     self.time = ServerValue.timestamp() as NSObject
   }
-    
+
   convenience override init() {
     self.init(text: "", displayName: "")
   }
-    
+
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func toDictionary() -> [String : AnyObject] {
-    let json = ["text": text, "displayName": displayName, "time": time] as [String : AnyObject]
+  func toDictionary() -> [String: AnyObject] {
+    let json = ["text": text, "displayName": displayName, "time": time] as [String: AnyObject]
     return json
   }
 }

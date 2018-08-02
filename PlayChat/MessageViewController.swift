@@ -16,15 +16,15 @@
 import Firebase
 import UIKit
 
-class MessageViewController : NSObject, UITableViewDataSource,
+class MessageViewController: NSObject, UITableViewDataSource,
 UITabBarControllerDelegate {
-  let CHS : String = "channels"
+  let CHS: String = "channels"
 
   var inbox: String!
   var ref: DatabaseReference!
   var query: DatabaseQuery!
   let dayFormatter = DateFormatter()
-  var channelViewDict: [String : UITableView] = [:]
+  var channelViewDict: [String: UITableView] = [: ]
   var msgs: [Message] = []
   var maxMessages: UInt
   var fbLog: FirebaseLogger!
@@ -43,28 +43,35 @@ UITabBarControllerDelegate {
       .queryOrdered(byChild: "time").queryLimited(toLast: maxMessages)
     let title = String(ptabBarController.selectedViewController!
       .tabBarItem.title!)
-    let tableView : UITableView = channelViewDict[title]!
+    let tableView: UITableView = channelViewDict[title]!
     fbLog?.log(inbox, message: "Switching channel to '" + title + "'")
-    query.observe(.value, with : { snapshot in
+    query.observe(.value, with: { snapshot in
       self.msgs = []
-        
+
       let enumerator = snapshot.children
-      
+
       while let entry = enumerator.nextObject() as? DataSnapshot {
-        let dictionary = entry.value as! Dictionary<String, AnyObject>
-        let msg = Message(
-            text: dictionary["text"] as! String,
-            displayName: dictionary["displayName"] as! String
-        )
-        msg.time = dictionary["time"] as! NSObject
-        self.msgs.append(msg)
+        if let dictionary = entry.value as? [String: AnyObject],
+           let text = dictionary["text"] as? String,
+           let displayName = dictionary["displayName"] as? String,
+           let time = dictionary["time"] as? NSObject {
+          let msg = Message(
+              text: text as String,
+              displayName: displayName as String
+          )
+          msg.time = time as NSObject
+          self.msgs.append(msg)
+        }
       }
-    
+
       tableView.reloadData()
-      if (snapshot.childrenCount > 0) {
-        let indexPath = IndexPath(row: self.msgs.count-1, section: 0)
-        tableView.scrollToRow(at: indexPath,
-          at: UITableViewScrollPosition.bottom, animated: false)
+      if snapshot.childrenCount > 0 {
+        let indexPath = IndexPath(row: self.msgs.count - 1, section: 0)
+        tableView.scrollToRow(
+          at: indexPath,
+          at: UITableViewScrollPosition.bottom,
+          animated: false
+        )
       }
     }) { (error) in
       print(error)
@@ -76,24 +83,30 @@ UITabBarControllerDelegate {
   }
 
   func tableView(_ tableView: UITableView,
-                 cellForRowAt indexPath: IndexPath)
-    -> UITableViewCell {
-      var cell = tableView.dequeueReusableCell(
-        withIdentifier: NSStringFromClass(MessageCell.self), for: indexPath) as! MessageCell
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    var cell: MessageCell
+    if let tmpCell = tableView.dequeueReusableCell(
+      withIdentifier: NSStringFromClass(MessageCell.self), for: indexPath) as? MessageCell {
+      cell = tmpCell
+    } else {
       cell = MessageCell(style: UITableViewCellStyle.default,
                          reuseIdentifier: NSStringFromClass(MessageCell.self))
-      if msgs.count > indexPath.row {
-        let msg = msgs[indexPath.row]
-        cell.body.text = msg.text
+    }
+
+    if msgs.count > indexPath.row {
+      let msg = msgs[indexPath.row]
+      cell.body.text = msg.text
+      if let time = msg.time as? Double {
         cell.details.text = msg.displayName + ", "
           + dayFormatter.string(
-            from: Date(timeIntervalSince1970: msg.time as! Double/1000))
+            from: Date(timeIntervalSince1970: time / 1_000))
       }
-      return cell
+    }
+
+    return cell
   }
-  
+
   func tableView(_ tableView: UITableView,
                  didSelectRowAtIndexPath indexPath: IndexPath) { }
 
 }
-
