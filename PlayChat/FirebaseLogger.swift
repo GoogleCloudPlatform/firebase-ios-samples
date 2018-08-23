@@ -13,6 +13,7 @@
  # limitations under the License.
  **/
 
+// [START FirebaseLogger]
 import Firebase
 
 class FirebaseLogger {
@@ -27,3 +28,4 @@ class FirebaseLogger {
     logRef.childByAutoId().setValue(entry.toDictionary())
   }
 }
+// [END FirebaseLogger]
