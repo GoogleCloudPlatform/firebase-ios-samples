@@ -17,37 +17,47 @@ class MessageCell: UITableViewCell {
     let padding: CGFloat = 5
     var body: UILabel!
     var details: UILabel!
-    
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor.clearColor()
-        selectionStyle = .None
-        
-        body = UILabel(frame: CGRectZero)
-        body.font = UIFont.systemFontOfSize(18)
-        body.textAlignment = .Left
-        body.textColor = UIColor.blackColor()
+        backgroundColor = UIColor.clear
+        selectionStyle = .none
+
+        body = UILabel(frame: CGRect.zero)
+        body.font = UIFont.systemFont(ofSize: 18)
+        body.textAlignment = .left
+        body.textColor = UIColor.black
         contentView.addSubview(body)
-        
-        details = UILabel(frame: CGRectZero)
-        details.textAlignment = .Right
-        details.font = UIFont.systemFontOfSize(11)
-        details.textColor = UIColor.darkGrayColor()
+
+        details = UILabel(frame: CGRect.zero)
+        details.textAlignment = .right
+        details.font = UIFont.systemFont(ofSize: 11)
+        details.textColor = UIColor.darkGray
         contentView.addSubview(details)
     }
-    
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        body.frame = CGRectMake(padding, padding, frame.width - padding * 2, frame.height - 6 * padding)
-        details.frame = CGRectMake(padding, frame.height - 6 * padding, frame.width - padding * 2, 6 * padding)
+        body.frame = CGRect(
+          x: padding,
+          y: padding,
+          width: frame.width - padding * 2,
+          height: frame.height - 6 * padding
+        )
+        details.frame = CGRect(
+          x: padding,
+          y: frame.height - 6 * padding,
+          width: frame.width - padding * 2,
+          height: 6 * padding
+        )
     }
 }

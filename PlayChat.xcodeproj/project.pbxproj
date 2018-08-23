@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		334AA7362849102C810A0692 /* Pods_PlayChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15C2D33A3AF1EC3BC52CAE2 /* Pods_PlayChat.framework */; };
 		7E32F0B81D3F208B00B02F5B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32F0B71D3F208B00B02F5B /* Message.swift */; };
 		7E5463E11D2667F000416C84 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E5463E01D2667F000416C84 /* GoogleService-Info.plist */; };
 		7EB2DB131D26400B00C7E163 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2DB121D26400B00C7E163 /* AppDelegate.swift */; };
@@ -32,9 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		252603E9CECF2FB81E350FAD /* Pods-PlayChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlayChat/Pods-PlayChat.release.xcconfig"; sourceTree = "<group>"; };
+		4D92F00D83762081F42EC10A /* Pods-PlayChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlayChat/Pods-PlayChat.debug.xcconfig"; sourceTree = "<group>"; };
 		7E32F0B71D3F208B00B02F5B /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7E5463E01D2667F000416C84 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7E5463EE1D2678EB00416C84 /* PlayChat-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlayChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		7EB2DB0F1D26400B00C7E163 /* PlayChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB2DB121D26400B00C7E163 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EB2DB191D26400B00C7E163 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 		7EBDB0AA1D49C4620043FC1E /* LogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
 		7EFC4AFB1D2A40350006F238 /* SigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		7EFC4AFD1D2FB2810006F238 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		D15C2D33A3AF1EC3BC52CAE2 /* Pods_PlayChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334AA7362849102C810A0692 /* Pods_PlayChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,12 +73,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2457843F20665FFAFE305BDE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D92F00D83762081F42EC10A /* Pods-PlayChat.debug.xcconfig */,
+				252603E9CECF2FB81E350FAD /* Pods-PlayChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7A042D20A5979310259E8154 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D15C2D33A3AF1EC3BC52CAE2 /* Pods_PlayChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7EB2DB061D26400B00C7E163 = {
 			isa = PBXGroup;
 			children = (
 				7EB2DB111D26400B00C7E163 /* PlayChat */,
 				7EB2DB281D26400B00C7E163 /* PlayChatUITests */,
 				7EB2DB101D26400B00C7E163 /* Products */,
+				2457843F20665FFAFE305BDE /* Pods */,
+				7A042D20A5979310259E8154 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,7 +120,6 @@
 				7EB2DB1B1D26400B00C7E163 /* Assets.xcassets */,
 				7EB2DB1D1D26400B00C7E163 /* LaunchScreen.storyboard */,
 				7EB2DB201D26400B00C7E163 /* Info.plist */,
-				7E5463EE1D2678EB00416C84 /* PlayChat-Bridging-Header.h */,
 				7EFC4AFB1D2A40350006F238 /* SigninViewController.swift */,
 				7EFC4AFD1D2FB2810006F238 /* MessageCell.swift */,
 				7E32F0B71D3F208B00B02F5B /* Message.swift */,
@@ -127,8 +149,8 @@
 				7EB2DB0B1D26400B00C7E163 /* Sources */,
 				7EB2DB0C1D26400B00C7E163 /* Frameworks */,
 				7EB2DB0D1D26400B00C7E163 /* Resources */,
-				9FB551D60FE47F8D6AD32AA6 /* [CP] Embed Pods Frameworks */,
 				3778ECEE87891F81C393F425 /* [CP] Copy Pods Resources */,
+				C9E744932CB6E9BC18C6C28D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -143,11 +165,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EB2DB311D26400B00C7E163 /* Build configuration list for PBXNativeTarget "PlayChatUITests" */;
 			buildPhases = (
-				EF672C1F2A77154A60D4299B /* [CP] Check Pods Manifest.lock */,
 				7EB2DB211D26400B00C7E163 /* Sources */,
 				7EB2DB221D26400B00C7E163 /* Frameworks */,
 				7EB2DB231D26400B00C7E163 /* Resources */,
-				E621274FB18583B660E61FFB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -166,22 +186,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = teppeiy;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					7EB2DB0E1D26400B00C7E163 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 43N4K8X58E;
+						LastSwiftMigration = 0940;
 					};
 					7EB2DB241D26400B00C7E163 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 43N4K8X58E;
+						LastSwiftMigration = 0940;
 						TestTargetID = 7EB2DB0E1D26400B00C7E163;
 					};
 				};
 			};
 			buildConfigurationList = 7EB2DB0A1D26400B00C7E163 /* Build configuration list for PBXProject "PlayChat" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -227,43 +249,42 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PlayChat/Pods-PlayChat-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlayChat/Pods-PlayChat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9FB551D60FE47F8D6AD32AA6 /* [CP] Embed Pods Frameworks */ = {
+		C9E744932CB6E9BC18C6C28D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PlayChat/Pods-PlayChat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlayChat/Pods-PlayChat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E621274FB18583B660E61FFB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlayChatUITests/Pods-PlayChatUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EB0E861B66A05E5EB499DA91 /* [CP] Check Pods Manifest.lock */ = {
@@ -272,28 +293,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlayChat-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		EF672C1F2A77154A60D4299B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -357,15 +366,24 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -387,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -402,15 +420,24 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -426,9 +453,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -436,6 +464,7 @@
 		};
 		7EB2DB2F1D26400B00C7E163 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D92F00D83762081F42EC10A /* Pods-PlayChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -445,11 +474,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PlayChat/PlayChat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		7EB2DB301D26400B00C7E163 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 252603E9CECF2FB81E350FAD /* Pods-PlayChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -458,6 +489,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.cloud.solutions.flexenv.PlayChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PlayChat/PlayChat-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -468,6 +500,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.cloud.solutions.flexenv.PlayChatUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = PlayChat;
 				USES_XCTRUNNER = YES;
 			};
@@ -480,6 +513,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.cloud.solutions.flexenv.PlayChatUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = PlayChat;
 				USES_XCTRUNNER = YES;
 			};

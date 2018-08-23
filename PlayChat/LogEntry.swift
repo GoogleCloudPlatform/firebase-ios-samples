@@ -15,28 +15,28 @@
 
 import Firebase
 
-class LogEntry : NSData {
+class LogEntry: NSData {
   var tag: String!
   var log: String!
   var time: NSObject!
-    
+
   init(tag: String, log: String) {
     super.init()
     self.tag = tag
     self.log = log
-    self.time = FIRServerValue.timestamp()
+    self.time = ServerValue.timestamp() as NSObject
   }
-    
+
   convenience override init() {
     self.init(tag: "", log: "")
   }
-    
+
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-    
-  func toDictionary() -> [String : AnyObject!] {
-    let json = ["tag": tag, "log": log, "time": time]
+
+  func toDictionary() -> [String: AnyObject] {
+    let json = ["tag": tag, "log": log, "time": time] as [String: AnyObject]
     return json
   }
 }

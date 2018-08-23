@@ -16,15 +16,15 @@
 import Firebase
 import UIKit
 
-class MessageViewController : NSObject, UITableViewDataSource,
+class MessageViewController: NSObject, UITableViewDataSource,
 UITabBarControllerDelegate {
-  let CHS : String = "channels"
+  let CHS: String = "channels"
 
   var inbox: String!
-  var ref: FIRDatabaseReference!
-  var query: FIRDatabaseQuery!
-  let dayFormatter = NSDateFormatter()
-  var channelViewDict: [String : UITableView] = [:]
+  var ref: DatabaseReference!
+  var query: DatabaseQuery!
+  let dayFormatter = DateFormatter()
+  var channelViewDict: [String: UITableView] = [: ]
   var msgs: [Message] = []
   var maxMessages: UInt
   var fbLog: FirebaseLogger!
@@ -35,58 +35,78 @@ UITabBarControllerDelegate {
   }
 
   func tabBarController(
-      ptabBarController: UITabBarController,
-      didSelectViewController viewController: UIViewController) {
+      _ ptabBarController: UITabBarController,
+      didSelect viewController: UIViewController) {
     query?.removeAllObservers()
     query = ref.child(CHS)
       .child(ptabBarController.selectedViewController!.tabBarItem.title!)
-      .queryOrderedByChild("time").queryLimitedToLast(maxMessages)
+      .queryOrdered(byChild: "time").queryLimited(toLast: maxMessages)
     let title = String(ptabBarController.selectedViewController!
       .tabBarItem.title!)
-    let tableView : UITableView = channelViewDict[title]!
+    let tableView: UITableView = channelViewDict[title]!
     fbLog?.log(inbox, message: "Switching channel to '" + title + "'")
-    query.observeEventType(.Value, withBlock : { snapshot in
+    query.observe(.value, with: { snapshot in
       self.msgs = []
-      for entry in snapshot.children {
-        let msg = Message(text: String(entry.value!.objectForKey("text")!),
-          displayName: String(entry.value!.objectForKey("displayName")!))
-        msg.time = String(entry.value!.objectForKey("time")!)
-        self.msgs.append(msg)
+
+      let enumerator = snapshot.children
+
+      while let entry = enumerator.nextObject() as? DataSnapshot {
+        if let dictionary = entry.value as? [String: AnyObject],
+           let text = dictionary["text"] as? String,
+           let displayName = dictionary["displayName"] as? String,
+           let time = dictionary["time"] as? NSObject {
+          let msg = Message(
+              text: text as String,
+              displayName: displayName as String
+          )
+          msg.time = time as NSObject
+          self.msgs.append(msg)
+        }
       }
+
       tableView.reloadData()
-      if (snapshot.childrenCount > 0) {
-        let indexPath = NSIndexPath(forRow: self.msgs.count-1, inSection: 0)
-        tableView.scrollToRowAtIndexPath(indexPath,
-          atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+      if snapshot.childrenCount > 0 {
+        let indexPath = IndexPath(row: self.msgs.count - 1, section: 0)
+        tableView.scrollToRow(
+          at: indexPath,
+          at: UITableViewScrollPosition.bottom,
+          animated: false
+        )
       }
     }) { (error) in
       print(error)
     }
   }
 
-  func tableView(tv: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tv: UITableView, numberOfRowsInSection section: Int) -> Int {
     return msgs.count
   }
 
-  func tableView(tableView: UITableView,
-                 cellForRowAtIndexPath indexPath: NSIndexPath)
-    -> UITableViewCell {
-      var cell = tableView.dequeueReusableCellWithIdentifier(
-        NSStringFromClass(MessageCell), forIndexPath: indexPath) as! MessageCell
-      cell = MessageCell(style: UITableViewCellStyle.Default,
-                         reuseIdentifier: NSStringFromClass(MessageCell))
-      if msgs.count > indexPath.row {
-        let msg = msgs[indexPath.row]
-        cell.body.text = msg.text
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    var cell: MessageCell
+    if let tmpCell = tableView.dequeueReusableCell(
+      withIdentifier: NSStringFromClass(MessageCell.self), for: indexPath) as? MessageCell {
+      cell = tmpCell
+    } else {
+      cell = MessageCell(style: UITableViewCellStyle.default,
+                         reuseIdentifier: NSStringFromClass(MessageCell.self))
+    }
+
+    if msgs.count > indexPath.row {
+      let msg = msgs[indexPath.row]
+      cell.body.text = msg.text
+      if let time = msg.time as? Double {
         cell.details.text = msg.displayName + ", "
-          + dayFormatter.stringFromDate(
-            NSDate(timeIntervalSince1970: Double(msg.time as! String)!/1000))
+          + dayFormatter.string(
+            from: Date(timeIntervalSince1970: time / 1_000))
       }
-      return cell
+    }
+
+    return cell
   }
-  
-  func tableView(tableView: UITableView,
-                 didSelectRowAtIndexPath indexPath: NSIndexPath) { }
+
+  func tableView(_ tableView: UITableView,
+                 didSelectRowAtIndexPath indexPath: IndexPath) { }
 
 }
-

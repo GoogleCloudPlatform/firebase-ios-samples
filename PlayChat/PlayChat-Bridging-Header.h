@@ -14,6 +14,6 @@
  **/
 #ifndef PlayChat_Bridging_Header_h
 #define PlayChat_Bridging_Header_h
-#import <Google/SignIn.h>
+@import GoogleSignIn;
 #endif 
 /* PlayChat_Bridging_Header_h */
