@@ -191,6 +191,7 @@ UITextFieldDelegate {
     user = nil
   }
 
+  // [START requestLogger]
   func requestLogger() {
     ref.child(IBX + "/" + inbox!).removeValue()
     ref.child(IBX + "/" + inbox!)
@@ -206,6 +207,7 @@ UITextFieldDelegate {
       })
     ref.child(REQLOG).childByAutoId().setValue(inbox)
   }
+  // [END requestLogger]
 
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if msgs.count == Int(maxMessages) {
