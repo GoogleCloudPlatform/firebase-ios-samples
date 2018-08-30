@@ -1,36 +1,69 @@
-# Build an iOS App Using  Firebase and App Engine Flexible Environment
-This repository contains iOS client sample code for "[Build an iOS App Using  Firebase and App Engine Flexible Environment](https://cloud.google.com/solutions/mobile/mobile-firebase-app-engine-flexible-ios)" paper. Sample backend code can be found [here](https://github.com/GoogleCloudPlatform/firebase-appengine-backend).
+# Build an iOS App Using Firebase and App Engine Flexible Environment
 
-## Build Requirements
-- Following Google APIs are needed to be enabled from Google Developers Console.
-  - Google App Engine
-  - Google Compute Engine
-- Sign up on [Firebase](https://firebase.google.com/) and create a new project (if you don't have one).
-- Build and test environment
-  - Xcode Version 7.3.1
-  - UI layout is optimal for iPhone 6.
+The Playchat sample app stores chat messages in the Firebase Realtime Database,
+which automatically synchronizes that data across devices. Playchat also writes
+user-event logs to the database. For more information about how the sample app
+works, see [Build an iOS App Using Firebase and the App Engine Flexible
+Environment](https://cloud.google.com/solutions/mobile/mobile-firebase-app-engine-flexible-ios)
+in the Google Cloud Platform documentation.
 
-Firebase is a Google product, independent from Google Cloud Platform.
+The following screenshot shows the app running on the iOS Simulator:
 
-## Configuration
-- Login to Firebase console and click "ADD APP" and select "Add Firebase to your iOS app".
-- Follow instructions and make sure to place "GoogleService-Info.plist" file under "PlayChat/PlayChat" directory.
-  - iOS bundle ID : com.google.cloud.solutions.flexenv
+![PlayChat sample
+app](https://cloud.google.com/solutions/mobile/images/firebase-flexible-playchat-message-sent-ios.png)
 
-## Build
-- Open "GoogleService-Info.plist" file and copy a value of REVERSED_CLIENT_ID (eg. com.googleusercontent.apps.xxxxx)
-- Open "Info.plist" file and replace "[REVERSED_CLIENT_ID]" to the value copied in the previous step.
-- Save "Info.plist" file.
-- Execute "pod install" under "PlayChat" directory.
+## Prerequisites
 
-## Launch and test
-- Start an iOS simulator and run the app.
-- Sign in with a Google account.
-- Select a channel from bottom menu and enter messages.
+Before using the sample app, make sure to have the following prerequisites:
 
-Note : press "Command + k" to show/hide keyboard.
+- A [Firebase account](https://console.firebase.google.com)
+- [Xcode](https://developer.apple.com/xcode/) version 9.4.1 or higher, including 
+  iOS Simulator version 9 or higher
+- [Cocoapods](https://cocoapods.org/) version 1.5.3 or higher
+- A [Google Account](https://accounts.google.com) to test the sample app
+
+## Configuring the app
+
+Complete the following tasks to configure the sample app with Firebase and
+Google Cloud Platform:
+
+1. Create a project in the [Firebase
+   Console](https://console.firebase.google.com/).
+   1. Register the iOS app in the project.
+   1. Add a Realtime Database to the project.
+1. Enable Google authentication for the project.
+1. Add a service account to the project.
+1. Enable billing for the project from the [Google Cloud Platform
+   Console](https://console.cloud.google.com).
+1. Enable the App Engine Admin and Compute Engine APIs.
+1. Deploy the backend service to Google Cloud Platform.
+1. Update the URL scheme in the `Info.plist` file of the sample app.
+
+For detailed instructions, see [Build an iOS App Using Firebase and the App
+Engine Flexible Environment](https://cloud.google.com/solutions/mobile/mobile-firebase-app-engine-flexible-ios).
+
+## Building the app
+
+- From a terminal window, go to the `PlayChat` directory and run the following
+  command:
+  ```
+  pod install
+  ```
+- From Xcode, select **Product** > **Build**.
+
+## Testing the app
+
+- From Xcode, select **Product** > **Run**. Xcode launches the sample app on the
+  iOS Simulator.
+- Sign in with a Google Account.
+- Select a channel from the menu and enter a message.
+
+To browse the data on the Realtime Database, go to your project on the [Firebase
+Console](https://console.firebase.google.com) and select **Develop** >
+**Database** > **Data**.
 
 ## License
+
  Copyright 2016 Google Inc. All Rights Reserved.
 
  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
