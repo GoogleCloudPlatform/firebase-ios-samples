@@ -44,6 +44,8 @@ Engine Flexible Environment](https://cloud.google.com/solutions/mobile/mobile-fi
 
 ## Building the app
 
+Follow these steps to install the dependencies and build the sample app:
+
 - From a terminal window, go to the `PlayChat` directory and run the following
   command:
   ```
@@ -52,6 +54,8 @@ Engine Flexible Environment](https://cloud.google.com/solutions/mobile/mobile-fi
 - From Xcode, select **Product** > **Build**.
 
 ## Testing the app
+
+Follow these steps to run the sample app and store messages in the Realtime Database:
 
 - From Xcode, select **Product** > **Run**. Xcode launches the sample app on the
   iOS Simulator.
